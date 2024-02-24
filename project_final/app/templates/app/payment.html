@@ -1,0 +1,62 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>contag</title>
+  <link rel="stylesheet" href="{% static 'css/pay.css' %}">
+</head>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #ffffff;
+  }
+  .container {
+    max-width: 600px;
+    margin: 50px auto;
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+  }
+
+  img {
+    max-width: 50%;
+    height: auto;
+  }
+
+  .contact-info {
+    margin-top: 20px;
+  }
+
+  .contact-info p {
+    margin: 10px 0;
+  }
+
+  .line-id {
+    color: #00c300;
+  }
+  .context {
+    color: #000000;
+  }
+</style>
+<body>
+    {% include 'base/tab_login.html' %}
+
+  <div class="container">
+    <div class="contact-info">
+        <img src="https://image.makewebeasy.net/makeweb/0/XilF1bKLt/DefaultData/LOGO_12_01.jpg?v=202012190947" alt="รูปภาพ">
+        <img src="https://scontent.fubp1-1.fna.fbcdn.net/v/t1.15752-9/423105822_1484966339074647_6183843208926975666_n.png?_nc_cat=103&ccb=1-7&_nc_sid=8cd0a2&_nc_eui2=AeGUCfWz-zkeYEVnRxnbjFJ8cqbSrLhXBjRyptKsuFcGNLJRqfgEB4igNiR37Z_IXqp5bF7LGW5C8zCKMPhSul-k&_nc_ohc=ObN_WC2_fHUAX8_GwIM&_nc_ht=scontent.fubp1-1.fna&oh=03_AdTOZm-BJMPiNvdaLtIKteNRGjm93UPwybnqRvEG7kXMvQ&oe=65FD0DF3" alt="รูปภาพ">
+      <p><strong>บัญชีธนาคาร:</strong> <span class="line-id">044-1-99891-0</span></p>
+      <p><strong>หมายเหตุ:</strong> <span class="context">ราคาสินค้าท่านจะได้รับประมาณ10.00-11.30 โมง ของทุกวัน </span></p>
+      <label for="attachment">อัพโหลดสลิป</label>
+      <input type="file" id="attachment" name="attachment">
+    </div>
+  </div>
+
+</body>
+
+</html>

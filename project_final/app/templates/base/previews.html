@@ -1,0 +1,294 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="{% static 'css/previews.css' %}">
+</head>
+<style>
+  * {
+    box-sizing: border-box;
+  }
+  
+  body {
+    background-color: #ffffff;
+    padding: auto;
+    font-family: Arial;
+  }
+  
+  /* Center website */
+  .main {
+    max-width: 1000px;
+    margin: auto;
+  }
+  
+  h1 {
+    font-size: 50px;
+    word-break: break-all;
+  }
+  
+  .row {
+    margin: 10px -16px;
+  }
+  
+  /* Add padding BETWEEN each column */
+
+  
+  /* Create three equal columns that floats next to each other */
+  .column {
+    float: left;
+    width: 33.33%;
+    display: none; /* Hide all elements by default */
+  }
+  
+  /* Clear floats after rows */ 
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  
+  /* Content */
+  .content {
+    background-color: white;
+    padding: 10px;
+  }
+  
+  /* The "show" class is added to the filtered elements */
+  .show {
+    display: block;
+  }
+  
+  /* Style the buttons */
+  .btn {
+    border: none;
+    outline: none;
+    padding: 12px 16px;
+    background-color: white;
+    cursor: pointer;
+  }
+  
+  .btn:hover {
+    background-color: #ddd;
+  }
+  
+  .btn.active {
+    background-color: #666;
+    color: white;
+  }
+  .container-area {
+            display: grid;
+            padding: 0.5rem;
+            margin: 0.5rem;
+            grid-template-columns: repeat(4,1fr);
+            grid-gap: 10px;
+            width: 1140px;
+            
+            margin: 0 auto;
+            margin-top: 20px;
+  }
+  .options_sale {
+            display: flex;
+            justify-content: flex-end;
+            border: 1px solid #333;   
+  }
+  .containerbody {
+            display: flex;
+            justify-content: start;
+            border: 1px solid rgb(0, 0, 0);
+            padding: 20px;
+            margin-top: 50px;
+
+  }
+  .container {
+            width: 700px;
+            border: 1px solid #333;
+            padding: 10px;
+            margin-left: 20px;
+            box-shadow: 5px 5px seashell;
+  }
+  .managebar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+  }
+
+  a {
+            list-style: none;
+            text-decoration: none;
+            color: black;
+  }
+  .choosedate {
+            border: 1px solid #333;
+            padding: 10px;
+  }
+  .addfood {
+            border: 1px solid #333;
+            padding: 10px;
+            margin-right: 20px;
+  }
+  .clearfood {
+            border: 1px solid #333;
+            padding: 10px;
+  } 
+  .container-area {
+            display: grid;
+            padding: 0.5rem;
+            margin: 0.5rem;
+            grid-template-columns: repeat(4,1fr);
+            grid-gap: 10px;
+            width: 1140px;
+            
+            margin: 0 auto;
+            margin-top: 20px;
+  }
+  .boxlistfood {
+            border: 1px solid rgb(0, 0, 0);
+            height: auto;
+            margin: 10px; 
+  }
+  .boxlistfood div {
+            margin-top: 5px;
+            text-align: center; 
+  }
+  .listitem a {
+            text-decoration: none;
+            color: black;
+  }
+  .image-food {
+            width: 100% ;
+            border: 1px solid rgb(0, 0, 0);
+            height: auto;
+            margin-top: 0;
+            position: relative;
+            display: inline-block;
+  }
+  .image-food img {
+            height: 120px; /* Set the height of the image container */
+            width: 90%; /* Set the width of the image container */  
+  }
+  .overlay {
+            position: absolute;
+            top: 30%;
+            left: 80%;
+            transform: translate(-50%, -50%);
+            padding: 10px;
+            border-radius: 5px; 
+            width: 30px;
+  }
+  .change-data {
+            background-color: greenyellow; /* Change the background color and opacity as needed */
+            display: inline-block;
+            padding: 6px;
+            width: 80px;
+            text-align: center;
+            white-space: nowrap; /* Prevent text from wrapping */
+            overflow: hidden; /* Hide overflowed text */
+            text-overflow: ellipsis;
+            color: black; /* Change the text color as needed */
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 12px; 
+  }
+  .detail_food {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 10px;
+  }
+  .foodname {
+            text-align: center;
+  }
+        .options_sale {
+            display: flex;
+            justify-content: flex-end;
+            border: 1px solid #333;
+        
+        }
+        .popup-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .buttonpopup {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+        }
+        .message {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            border: 1px solid rgb(0, 0, 0);
+
+        }
+        .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border: 1px solid #000;
+            background-color: #fff;
+            padding: 20px;
+            z-index: 9999;
+            width: 150px;
+            height: 150px;
+        }
+</style>
+<body>
+
+<!-- MAIN (Center website) -->
+<div class="main">
+<hr>
+<h2>รายการอาหาร</h2>
+<form class="submit_sales" method="post" action="/cart/{{ f.id }}/">
+  {% csrf_token %}
+  <div class="container-area">
+      {% for f in food %}
+                  <div class="boxlistfood">
+                      {% if f.image %}
+                      <div class="image-food">
+                          <img src="{{ f.image.url }}" alt="food-image">
+                      </div>
+                      {% endif %}
+                      <input type="hidden" name="food_id" value="{{ f.id }}">
+                      <div class="options_sale">
+                          {% if f.options == 'onsale' %}
+                          <label for="option_{{ f.id }}">
+                          </label>
+                          {% endif %}
+                          {% if f.options == 'soldout' %}
+                          <label for="option_{{ f.id }}">
+                          </label>
+                          {% endif %}
+                          {% if f.options == 'notchoose' %}
+                          <label for="option_{{ f.id }}">
+                          </label>
+                          {% endif %}
+                          <form method="post" action="/cart/">
+                            {% csrf_token %}
+                            <input type="hidden" name="food_id" value="{{ f.id }}">
+                            <button type="submit">สั่งซื้อ</button>
+                          </form>
+                      </div>
+                      <div class="foodname">{{ f.name }}</div> 
+                      <div class="detail_food">
+                          <div>{{ f.price }} {{ f.unit }}</div>
+                          {% if f.score %}
+                              <div>{{ f.score }}</div>
+                          {% endif %}
+                          {% if f.quantity_review >= 10 %}
+                              <div>({{ f.quantity_review }})</div>
+                          {% endif %}
+                      </div>
+
+                  </div>   
+      {% endfor %}
+  </div>
+</form>
+
+</body>
+</html>
