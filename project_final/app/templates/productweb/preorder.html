@@ -7,6 +7,73 @@
 <link rel="stylesheet" href="{% static 'css/preorder1.css' %}">
 <title>รายการสั่งซื้อ</title>
 </head>
+<style>
+  /* Container Style */
+.container {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Heading Style */
+h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+/* Order Box Style */
+.order-box {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 20px;
+    margin-bottom: 20px;
+    background-color: #f9f9f9;
+}
+
+/* Order Details Style */
+.order-details {
+    margin-bottom: 20px;
+}
+
+.order-details div {
+    margin-bottom: 10px;
+}
+
+label {
+    font-weight: bold;
+}
+
+h4 {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+/* Link Style */
+a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #0056b3;
+}
+
+/* Status Button Style */
+.status-button {
+    display: inline-block;
+    padding: 8px 12px;
+    background-color: #28a745;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.status-button:hover {
+    background-color: #218838;
+}
+
+</style>
 
 <body>
   {% include 'base/tab_login.html' %}
@@ -16,34 +83,26 @@
     <div class="order-box">
       <div class="order-details">
         <div>
-          <label>เลขคำสั่งซื้อ:</label> <a href="#">{{ order.id }}</a>
+          <label>เลขคำสั่งซื้อ:</label> <a href="#">{{ order.id }}</a><h4>002513</h4>
         </div>
         <div>
-          <label>เวลาสั่งซื้อ:</label> {{ order.created_at }}
-        </div>
-      </div>
-      <div class="order-details">
-        <div>
-          <label>ชื่อผู้สั่ง:</label> {{ order.user_profile.first_name }} {{ order.user_profile.last_name }}
-        </div>
-        <div>
-          <label>สถานะ:</label> {{ order.get_status_display }}
+          <label>เวลาสั่งซื้อ:</label><h4>09.06</h4> {{ order.created_at }}
         </div>
       </div>
       <div class="order-details">
         <div>
-          <label>ชื่อป้าย:</label> {{ order.name }}
+          <label>ชื่อผู้สั่ง:</label><h4>ฉัตรชัย ศรมณี</h4> {{ order.user_profile.first_name }} {{ order.user_profile.last_name }}
         </div>
         <div>
-          <label>ขนาด:</label> {{ order.get_category_display }}
+          <label>สถานะ:</label><h4>รอรับอาหาร</h4> {{ order.get_status_display }}
         </div>
       </div>
       <div class="order-details">
         <div>
-          <label>แบบป้าย:</label> {{ order.get_material_display }}
+          <label>ชื่ออาหาร:</label><h4>กระเพราหมูกรอบ</h4> {{ order.name }}
         </div>
         <div>
-          <label>รายละเอียดเพิ่มเติม:</label> {{ order.message }}
+          <label>จำนวน:</label><h4>1</h4> {{ order.get_category_display }}
         </div>
       </div>
       <div class="order-details">
@@ -56,7 +115,7 @@
           {% endif %}
         </div>
         <div>
-          <a class="status-button" href="orders/track/<int:order_id>/">ดูสถานะ</a>
+          <a class="status-button" href="orders/track/<int:order_id>">ดูสถานะ</a>
         </div>
       </div>
     </div>

@@ -244,7 +244,7 @@
 <div class="main">
 <hr>
 <h2>รายการอาหาร</h2>
-<form class="submit_sales" method="post" action="/cart/{{ f.id }}/">
+<form class="submit_sales" method="post" action="/cart/{{ f.id }}">
   {% csrf_token %}
   <div class="container-area">
       {% for f in food %}

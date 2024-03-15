@@ -23,7 +23,7 @@ class UserProfile(models.Model):
 class Food(models.Model):
     name = models.CharField(max_length=100)
     price = models.IntegerField(default=0)
-    unit = models.CharField(max_length=100,default='บาทต่อถุง')
+    unit = models.CharField(max_length=100,default='บาท')
     score = models.FloatField(default=0,blank=True,null=True)
     quantity_review = models.IntegerField(default=0,blank=True,null=True)
     image = models.ImageField(upload_to='media/image/',blank=True,null=True)
@@ -35,6 +35,7 @@ class Food(models.Model):
 
     def __str__(self) -> str:
         return f'เมนู {self.name} ราคา {self.price} บาท status : {self.options}'
+    
     def save(self, *args, **kwargs):
         super().save(*args, **kwargs)
         if self.image:
@@ -66,6 +67,7 @@ class Detailcart(models.Model):
 
 class Order(models.Model):
     user_profile = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
+    price = models.IntegerField(default=0)
     name = models.CharField(max_length=100)
     food = models.ForeignKey(Food, on_delete=models.CASCADE)
     quantity = models.PositiveIntegerField(default=1)

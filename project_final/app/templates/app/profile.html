@@ -7,66 +7,47 @@
     <link rel="stylesheet" href="https://cdn.tailwindcss.com">
 </head>
 <style>
-    body {
-  font-family: 'Arial', sans-serif;
-  margin: 0;
-  padding: auto;
-  background-color: #ffffff;
-  min-height: 100vh;
-  justify-content: center;
-  align-items: center;
-}
-
+/* Profile Container Style */
 .profile-container {
-  max-width: 600px;
-  background-color: #f9b7b7;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-  padding: 20px;
-  margin-top: 20px;
-  text-align: left;
-  margin: auto;
-}
-.profile-image {
-  width: 150px;
-  height: 150px;
-  border-radius: 50%;
-  object-fit: cover;
-  margin-bottom: 20px;
+    background-color: #fff;
+    border: 1px solid #eaeaea;
+    border-radius: 5px;
+    padding: 20px;
+    margin-top: 20px;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
 }
 
-.profile-name {
-  font-size: 24px;
-  font-weight: bold;
-  margin-bottom: 10px;
+.profile-container h2 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
 }
 
-.profile-info {
-  font-size: 16px;
-  color: #868e96;
-  margin-bottom: 20px;
+.profile-container p {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 10px;
 }
 
-.profile-description {
-  font-size: 18px;
-  margin-bottom: 20px;
+/* File Upload Style */
+input[type="file"] {
+    display: block;
+    margin-bottom: 10px;
 }
 
-form {
-  margin-top: 20px;
-}
-
+/* Button Style */
 button {
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-  padding: 10px 20px;
-  font-size: 16px;
-  cursor: pointer;
-  border-radius: 4px;
+    padding: 10px 20px;
+    background-color: #ff5733;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
 button:hover {
-  background-color: #0056b3;
+    background-color: #e64a19;
 }
 
 </style>
@@ -84,10 +65,6 @@ button:hover {
         <p>เบอร์โทรศัพท์: {{ user.userprofile.phone_number }}</p>
         <p>ที่อยู่: {{ user.userprofile.address }}</p>
         <p>วันเกิด: {{ user.userprofile.birth_date }}</p>
-          <form method="post" enctype="multipart/form-data">
-            {% csrf_token %}
-            <input type="file" name="profile_image" accept="image/*">
-          </form>
           <br>
           <a href="{% url 'edit_profile' %}"><button>แก้ไขประวัติ</button></a>
     </div>

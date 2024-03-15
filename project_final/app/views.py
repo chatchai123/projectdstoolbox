@@ -182,6 +182,7 @@ def clearfood(req):
         return redirect('managefood')
     else:
         return redirect('managefood')
+    
 def updatefood(req,id):
     if req.method=='GET':
         food = Food.objects.get(pk=id)
@@ -330,6 +331,9 @@ def profile(request):
 
 def Me(request):
     return render(request, 'app/me.html', {'user': request.user})
+
+def pt(request):
+    return render(request, 'app/pt.html', {'user': request.user})
 
 def home(req):
     food = Food.objects.all()

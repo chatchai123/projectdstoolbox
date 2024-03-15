@@ -14,6 +14,7 @@ urlpatterns = [
     path('search/',search,name='search'),
     path('management/', admin1, name='management'),
     path('me/', Me, name='me'),
+    path('pt/', pt, name='pt'),
     path('signout', signout, name='signout'),
     path('registerXlogin', registerXlogin, name='registerXlogin'),
     path('register', register, name='register'),

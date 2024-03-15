@@ -8,7 +8,7 @@
 </head>
 <body>
     <h1>Delete Food</h1>
-    <p>Are you sure you want to delete the food "{{ food.name }}"?</p>
+    <p>Are you sure you want to delete the food "{{ f.name }}"?</p>
     <form action="{% url 'delete_food' food.id %}" method="post">
         {% csrf_token %}
         <input type="submit" value="Delete">
